@@ -350,5 +350,16 @@ void loop()
       Serial.println("Acao 001 recebida.");
     }
     
+    else if (acao =='l') {
+      digitalWrite(13,1);
+      Serial.println("Acao 001 recebida.");
+    }
+    else if (acao =='m') {
+      digitalWrite(13,0);
+      Serial.println("Acao 001 recebida.");
+    }
+    
+    
+    
   }
 }
