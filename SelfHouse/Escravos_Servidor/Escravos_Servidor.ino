@@ -1,7 +1,6 @@
 #include <SPI.h>
-#include <SoftwareSerial.h>
 #include <Ethernet.h> 
-
+#include <SoftwareSerial.h>
 /*
  Note:
  Not all pins on the Mega and Meg a 2560 support change interrupts,
@@ -45,13 +44,13 @@ float media = 0;
 void setup()
 {
   Serial.begin(9600);
-   Serial.println("Iniciando programa..");
-    Ethernet.begin(mac,ip,gateway,subnet);
-    server.begin();
-    Serial.println("Server ativo no IP: ");
-    Serial.print(Ethernet.localIP());
-    
+  Serial.println("Iniciando programa..");
+  Ethernet.begin(mac,ip,gateway,subnet);
+  server.begin();
+  Serial.println("Server ativo no IP: ");
+  Serial.print(Ethernet.localIP());
   servidor.begin(9600);
+  
 }
 void loop()
 {
@@ -60,7 +59,7 @@ void loop()
   {
     boolean continua = true;
     String linha = "";
-    
+
     while(client.connected())
     {
       if(client.available()){
@@ -82,10 +81,11 @@ void loop()
             String acao    = linha.substring(iniciofrente,fimfrente);//recupero o valor do comando
        
  
-           client.print("  dados({ \"acao\" : \"" + acao+"\", \"ip\" : \""+Ethernet.localIP()+"\""); //so imprime devolta o valor do comando, aqui vc faz o que quiser ;)
+            client.print("  dados({ \"acao\" : \"" + acao+"\", \"ip\" : \""+Ethernet.localIP()+"\""); //so imprime devolta o valor do comando, aqui vc faz o que quiser ;)
          
             Serial.println(acao);
-            servidor.print(acao);
+
+            //servidor.print(acao);
             
             if(acao == "tem"){
               client.print(", \"temp\": {");
@@ -131,19 +131,77 @@ void loop()
               client.print(media);
               client.print("\"}");
             }
+            else if (acao == "001"){
+              servidor.print("a");
+            }
+            
+            else if (acao == "002"){
+              servidor.print("b");
+            }
+            else if (acao == "003"){
+              servidor.print("c");
+            }
+            else if (acao == "004"){
+              servidor.print("d");
+            }
+            else if (acao == "005"){
+              servidor.print("e");
+            }
+            else if (acao == "006"){
+              servidor.print("f");
+            }
+            else if (acao == "007"){
+              servidor.print("g");
+            }
+            else if (acao == "008"){
+              servidor.print("h");
+            }
+            else if (acao == "009"){
+              servidor.print("i");
+            }
+            else if (acao == "010"){
+              servidor.print("j");
+            }
+            else if (acao == "011"){
+              servidor.print("l");
+            }
+            else if (acao == "012"){
+              servidor.print("m");
+            }
+            else if (acao == "013"){
+              servidor.print("n");
+            }
+            else if (acao == "014"){
+              servidor.print("o");
+            }
+            else if (acao == "015"){
+              servidor.print("p");
+            }
+            else if (acao == "016"){
+              servidor.print("q");
+            }
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             client.print("})");
-
-         }            
-        
+         }          
           break;
         }
-        
         if(c == '\n') { continua = true; }
         else if (c != '\r') { continua = false; }
       }
     }
-     
      delay(1);
      client.stop();
   }
