@@ -1,4 +1,3 @@
-#include <Wire.h>
 #include <IRremote.h>
 #include <Bounce.h>
 #include <SoftwareSerial.h>
@@ -13,39 +12,39 @@ IRsend irsend;
 
 byte inicio = B00000000;
 
-#define LUZ1 0
-#define LUZ2 1
-#define LUZ3 2
-#define LUZ4 3
-#define LUZ5 4
-#define LUZ6 5
-#define LUZ7 6
-#define LUZ8 7
-#define LUZ9 0
-#define LUZ10 1
-#define LUZ11 2
-#define LUZ12 3
-#define LUZ13 4
-#define LUZ14 5
-#define LUZ15 6
-#define LUZ16 7
+#define LUZ1 23
+#define LUZ2 25
+#define LUZ3 27
+#define LUZ4 28
+#define LUZ5 31
+#define LUZ6 33
+#define LUZ7 35
+#define LUZ8 37
+#define LUZ9 39
+#define LUZ10 41
+#define LUZ11 43
+#define LUZ12 45
+#define LUZ13 47
+#define LUZ14 49
+#define LUZ15 51
+#define LUZ16 53
 
-#define BUTTON1 23
+#define BUTTON1 22
 #define BUTTON2 24
-#define BUTTON3 25
-#define BUTTON4 26
-#define BUTTON5 27
-#define BUTTON6 28
-#define BUTTON7 29
-#define BUTTON8 30
-#define BUTTON9 31
-#define BUTTON10 32
-#define BUTTON11 33
-#define BUTTON12 34
-#define BUTTON13 35
-#define BUTTON14 36
-#define BUTTON15 37
-#define BUTTON16 38
+#define BUTTON3 26
+#define BUTTON4 28
+#define BUTTON5 30
+#define BUTTON6 32
+#define BUTTON7 34
+#define BUTTON8 36
+#define BUTTON9 38
+#define BUTTON10 40
+#define BUTTON11 42
+#define BUTTON12 44
+#define BUTTON13 46
+#define BUTTON14 48
+#define BUTTON15 50
+#define BUTTON16 52
 
 int RELE1 = HIGH;
 int RELE2 = HIGH;

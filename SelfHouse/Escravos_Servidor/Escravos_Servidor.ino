@@ -23,7 +23,6 @@ IPAddress subnet(255,255,255,0);
 
 EthernetServer server(80);
 
-
 int analogPin0 = A0;
 int analogPin1 = A1;
 int analogPin2 = A2;
@@ -42,7 +41,6 @@ float t3 = 0;
 float t4 = 0;
 float t5 = 0;
 float media = 0;
-
 
 void setup()
 {
@@ -97,7 +95,6 @@ void loop()
               st4 = analogRead(analogPin3);
               st5 = analogRead(analogPin4);
               
-               
               t1 = (st1 * 0.0049);
               t1 = t1 * 100;
               client.print("\"quarto1\" : \"");
