@@ -21,7 +21,7 @@ IPAddress ip(192,168,1,111);
 IPAddress gateway(192,168,1,1);
 IPAddress subnet(255,255,255,0);
 
-EthernetServer server(80);
+EthernetServer server(1000);
 
 int analogPin0 = A0;
 int analogPin1 = A1;
@@ -110,7 +110,6 @@ void setup()
   Serial.print(Ethernet.localIP());
   servidor.begin(9600);
   
-  
     pinMode(BUTTON1, INPUT);
     pinMode(BUTTON2, INPUT);
     pinMode(BUTTON3, INPUT);
@@ -152,18 +151,14 @@ void loop()
        if ( RELE1 == LOW ) {
          RELE1 = HIGH;
          //Serial.println("RELE1 ATIVADO");
-         
          servidor.print("a");
        } else {
          RELE1 = LOW;
          servidor.print("b");
          //Serial.println("RELE1 DESATIVADO");
-         
        }
-       
      }
    }  
-   
  
    if ( bon2.update() ) {
      if ( bon2.read() == HIGH) {
@@ -176,7 +171,6 @@ void loop()
          //Serial.println("RELE2 DESATIVADO");
          servidor.print("d");
        }
-     
      }
    }
    
@@ -189,10 +183,9 @@ void loop()
          RELE3 = LOW;
          servidor.print("f");
        }
- 
      }
    }
-  /* 
+
    if ( bon4.update() ) {
      if ( bon4.read() == HIGH) {
        if ( RELE4 == LOW ) {
@@ -202,7 +195,6 @@ void loop()
          RELE4 = LOW;
          servidor.print("h");
        }
-       digitalWrite(LUZ4,RELE4);
      }
    }
    
@@ -215,7 +207,6 @@ void loop()
          RELE5 = LOW;
          servidor.print("j");
        }
-       digitalWrite(LUZ5,RELE5);
      }
    }
    
@@ -228,10 +219,9 @@ void loop()
          RELE6 = LOW;
          servidor.print("m");
        }
-       digitalWrite(LUZ6,RELE6);
      }
    }
-   
+     
    if ( bon7.update() ) {
      if ( bon7.read() == HIGH) {
        if ( RELE7 == LOW ) {
@@ -241,7 +231,6 @@ void loop()
          RELE7 = LOW;
          servidor.print("o");
        }
-       digitalWrite(LUZ7,RELE7);
      }
    }
    
@@ -254,7 +243,6 @@ void loop()
          RELE8 = LOW;
          servidor.print("q");
        }
-       digitalWrite(LUZ8,RELE8);
      }
    }
    
@@ -267,7 +255,6 @@ void loop()
          RELE9 = LOW;
          servidor.print("s");
        }
-       digitalWrite(LUZ9,RELE9);
      }
    }
    
@@ -280,7 +267,6 @@ void loop()
          RELE10 = LOW;
          servidor.print("u");
        }
-       digitalWrite(LUZ10,RELE10);
      }
    }
    
@@ -293,7 +279,6 @@ void loop()
          RELE11 = LOW;
          servidor.print("x");
        }
-       digitalWrite(LUZ11,RELE11);
      }
    }
    
@@ -304,9 +289,8 @@ void loop()
           servidor.print("y");
        } else {
          RELE12 = LOW;
-         servidor.print("w");
+         servidor.print("z");
        }
-       digitalWrite(LUZ12,RELE12);
      }
    }
    
@@ -314,12 +298,11 @@ void loop()
      if ( bon13.read() == HIGH) {
        if ( RELE13 == LOW ) {
          RELE13 = HIGH;
-          Serial.println("RELE13 ATIVADO");
+          servidor.print("2");
        } else {
          RELE13 = LOW;
-         Serial.println("RELE13 DESATIVADO");
+        servidor.print("3");
        }
-       digitalWrite(LUZ13,RELE13);
      }
    }
    
@@ -327,25 +310,23 @@ void loop()
      if ( bon14.read() == HIGH) {
        if ( RELE14 == LOW ) {
          RELE14 = HIGH;
-          Serial.println("RELE14 ATIVADO");
+         servidor.print("4");
        } else {
          RELE14 = LOW;
-         Serial.println("RELE14 DESATIVADO");
+         servidor.print("5");
        }
-       digitalWrite(LUZ14,RELE14);
      }
    }
-   
+ 
    if ( bon15.update() ) {
      if ( bon15.read() == HIGH) {
        if ( RELE15 == LOW ) {
          RELE15 = HIGH;
-          Serial.println("RELE15 ATIVADO");
+          servidor.print("6");
        } else {
          RELE15 = LOW;
-         Serial.println("RELE15 DESATIVADO");
+        servidor.print("7");
        }
-       digitalWrite(LUZ15,RELE15);
      }
    }
    
@@ -353,16 +334,13 @@ void loop()
      if ( bon16.read() == HIGH) {
        if ( RELE16 == LOW ) {
          RELE16 = HIGH;
-          Serial.println("RELE16 ATIVADO");
+         servidor.print("8");
        } else {
          RELE16 = LOW;
-         Serial.println("RELE16 DESATIVADO");
+        servidor.print("9");
        }
-       digitalWrite(LUZ16,RELE16);
      }
    }
-   
-*/
 
   EthernetClient client = server.available();
   if(client)
@@ -389,12 +367,10 @@ void loop()
             iniciofrente     = iniciofrente+6; //pega o caractere seguinte
             int fimfrente    = iniciofrente+3; //esse comando espero 3 caracteres
             String acao    = linha.substring(iniciofrente,fimfrente);//recupero o valor do comando
-       
  
             client.print("  dados({ \"acao\" : \"" + acao+"\", \"ip\" : \""+Ethernet.localIP()+"\""); //so imprime devolta o valor do comando, aqui vc faz o que quiser ;)
          
-            Serial.println(acao);
-            
+            Serial.println(acao);  
   
               client.print(", \"temp\": {");
               st1 = analogRead(analogPin0);
@@ -437,9 +413,7 @@ void loop()
               
               client.print("\"val_media\" : \"");
               client.print(media);
-              client.print("\"},");
-            
-            
+              client.print("\"},");              
             
             if (acao == "001"){
               servidor.print("a");
