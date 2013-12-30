@@ -2,7 +2,6 @@
 #include <Ethernet.h>
 #include <Bounce.h>
 #include <SoftwareSerial.h>
-SoftwareSerial servidor(8,9);
 /*
  Note:
  Not all pins on the Mega and Meg a 2560 support change interrupts,
@@ -14,6 +13,7 @@ SoftwareSerial servidor(8,9);
  8, 9, 10, 11, 14 (MISO), 15 (SCK), 16 (MOSI).
 
 */
+SoftwareSerial servidor(10,11);
 
 byte mac[] = {0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED};
 
@@ -41,8 +41,6 @@ float t3 = 0;
 float t4 = 0;
 float t5 = 0;
 float media = 0;
-
-
 
 #define BUTTON1 22
 #define BUTTON2 23
@@ -150,12 +148,12 @@ void loop()
      if ( bon1.read() == HIGH) {
        if ( RELE1 == LOW ) {
          RELE1 = HIGH;
-         //Serial.println("RELE1 ATIVADO");
-         servidor.print("a");
+         Serial.println("RELE1 ATIVADO");
+         servidor.print("001");
        } else {
          RELE1 = LOW;
-         servidor.print("b");
-         //Serial.println("RELE1 DESATIVADO");
+         servidor.print("002");
+         Serial.println("RELE1 DESATIVADO");
        }
      }
    }  
@@ -415,12 +413,12 @@ void loop()
               client.print(media);
               client.print("\"},");              
             
-            if (acao == "001"){
+            if (acao == "111"){
               servidor.print("a");
               RELE1 = HIGH;
             }
             
-            else if (acao == "002"){
+            else if (acao == "112"){
               servidor.print("b");
               RELE1 = LOW;
             }
@@ -525,3 +523,4 @@ void loop()
      client.stop();
   }
 }
+

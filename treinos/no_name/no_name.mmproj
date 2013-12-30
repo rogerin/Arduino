@@ -1,0 +1,10 @@
+<mm_project serial_port="" board="Arduino BT w/ ATmega328" programmer="Arduino as ISP" includePaths="" libPaths="" libs="" default="yes" useCodeAutomation="yes" linkPrintfVersion="1" serialPortSpeed="" >
+  <files>
+    <file name="no_name_main.cpp" open="no" />
+    <file name="no_name_main.h" open="yes" />
+  </files>
+  <extras>
+  </extras>
+  <externals>
+  </externals>
+</mm_project>

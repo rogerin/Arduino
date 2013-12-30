@@ -1,0 +1,10 @@
+<mm_project serial_port="COM20" board="Arduino BT w/ ATmega328" programmer="" includePaths="" libPaths="" libs="" default="yes" useCodeAutomation="yes" linkPrintfVersion="1" serialPortSpeed="" >
+  <files>
+    <file name="minhacasa_main.cpp" open="yes" />
+    <file name="minhacasa_main.h" open="no" />
+  </files>
+  <extras>
+  </extras>
+  <externals>
+  </externals>
+</mm_project>
